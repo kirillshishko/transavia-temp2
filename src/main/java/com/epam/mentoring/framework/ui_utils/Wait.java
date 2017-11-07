@@ -26,25 +26,21 @@ public class Wait {
                 .withMessage("Element was not found by locator ");
     }
 
-    public void waitForElementIsClickable(WebElement element) {
+    public static void  waitForPageLoaded(WebDriver driver, long timeout) {
+        new FluentWait<>(driver).withTimeout(timeout, TimeUnit.SECONDS).pollingEvery(1000, TimeUnit.MILLISECONDS)
+                .until((Function<WebDriver, Boolean>) driver1 -> ((JavascriptExecutor) driver1)
+                        .executeScript("return document.readyState").equals("complete"));
+    }
+
+    public  void waitForElementIsClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForTextInElement(WebElement element, String text) {
-        wait.until(ExpectedConditions.textToBePresentInElementValue(element,text));
+        wait.until(ExpectedConditions.textToBePresentInElementValue(element, text));
     }
 
-    public void  waitForPageLoaded(WebDriver driver , long timeout){
-        new FluentWait<>(driver).withTimeout(timeout, TimeUnit.SECONDS).pollingEvery(1000,TimeUnit.MILLISECONDS)
-                .until(new Function<WebDriver, Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor)driver ).executeScript("return document.readyState").equals("complete");
-                    }
-                });
-    }
-
-
-    public void waitForElementAppearing(WebElement element){
+    public void waitForElementAppearing(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 

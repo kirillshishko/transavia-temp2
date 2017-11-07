@@ -2,7 +2,7 @@ package transavia.services;
 
 import com.epam.mentoring.framework.ui_utils.Wait;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import transavia.pages.BookingFlightPage;
 import transavia.pages.HomePage;
 
 public class HomePageService extends AbstractService {
@@ -14,53 +14,45 @@ public class HomePageService extends AbstractService {
         homePage = new HomePage(driver);
     }
 
-    public void checkSearchRaceForm() {
-        Assert.assertTrue( homePage.isAirportFromInputDisplayed());
 
-        Assert.assertTrue( homePage.isAirportToInputDisplayed());
-        Assert.assertTrue( homePage.isDePartureDateInputDisplayed());
-        Assert.assertTrue( homePage.isReturnDateInputDisplayed());
-        Assert.assertTrue( homePage.isReturnOnCheckboxDisplayed());
 
-        Assert.assertTrue( homePage.isPassengersInputBtnDisplayed());
 
+    public BookingFlightPage fillSearchRaceFormWithoutReturnDate(String cityFrom, String cityTo, String departureDate, int adaultsNumber, int chilldernsNumber) {
+        homePage.chooseAirportFrom(cityFrom);
+        homePage.chooseAirportTo(cityTo);
+        homePage.sendDepartureDateInput(departureDate);
         homePage.clickPasengersInputBtn();
-        Assert.assertTrue(homePage.getReturnDateInputText().isEmpty());
-        Wait.pause(300);
-        Assert.assertTrue( homePage.isAdultsIncreaseDisplayed());
-        Assert.assertTrue( homePage.isAdultsDecreaseBtnDisplayed());
-        Assert.assertTrue( homePage.isChildrensIncreaseBtnDisplayed());
-        Assert.assertTrue( homePage.isChildrensDecreaseBtnDisplayed());
-        Assert.assertTrue( homePage.isSearchBtnDisplayed());
-
+        chooseAdultsNumber(adaultsNumber);
+        chooseChildrenNumber(chilldernsNumber);
+        homePage.clickSavePassengersCountBtn();
+        homePage.clickSearchBtn();
+        return  new BookingFlightPage(driver);
     }
 
-    public void fillSearchRaceFormWithoutReturnDate(String cityFrom, String cityTo, String departureDate, int adaultsNumber, int chilldernsNumber) {
+
+    public BookingFlightPage fillSearchRaceFormWithReturnDate(String cityFrom, String cityTo, String departureDate, String returnDate,  int adultsNumber, int childrenNumber) {
+        Wait.waitForPageLoaded(driver,10000);
         homePage.chooseAirportFrom(cityFrom);
         homePage.chooseAirportTo(cityTo);
         homePage.sendDepartureDateInput(departureDate);
         homePage.clickReturnOnCheckbox();
+        homePage.sendReturnDateInput(returnDate);
         homePage.clickPasengersInputBtn();
-        chooseAdaultsNumber(adaultsNumber);
-        chooseChildrenNumber(chilldernsNumber);
+        chooseAdultsNumber(adultsNumber);
+        chooseChildrenNumber(childrenNumber);
         homePage.clickSavePassengersCountBtn();
         homePage.clickSearchBtn();
+        return  new BookingFlightPage(driver);
     }
 
-
-
-    public void fillSearchRaceFormWithReturnDate(String cityFrom, String cityTo, String departureDate, String returnDate) {
-
-    }
-
-    public void chooseChildrenNumber(int chilldrenNumber) {
-        for (int i = 0; i < chilldrenNumber-1; i++) {
+    public void chooseChildrenNumber(int childrenNumber) {
+        for (int i = 0; i < childrenNumber - 1; i++) {
             homePage.clickChildrensIncreaseBtn();
         }
     }
 
-    private void chooseAdaultsNumber(int adoultsNumber) {
-        for (int i = 0; i < adoultsNumber-1; i++) {
+    private void chooseAdultsNumber(int adultsNumber) {
+        for (int i = 0; i < adultsNumber - 1; i++) {
             homePage.clickAdultsIncreaseBtn();
         }
     }

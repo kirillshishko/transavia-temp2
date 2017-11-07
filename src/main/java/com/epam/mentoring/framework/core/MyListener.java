@@ -1,6 +1,6 @@
 package com.epam.mentoring.framework.core;
 
-import com.epam.mentoring.framework.webdrivers.WebDriverFactoryManager;
+import com.epam.mentoring.framework.webdriverfactory.FactoryDriver;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -29,7 +29,7 @@ public class MyListener extends TestListenerAdapter {
     }
 
     public void takeScreenShot(String methodName) {
-        driver = WebDriverFactoryManager.getInstance();
+        driver = FactoryDriver.getInstance();
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File(filePath + methodName + ".png"));
