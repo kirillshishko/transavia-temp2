@@ -17,7 +17,7 @@ public class HomePageService extends AbstractService {
 
 
 
-    public BookingFlightPage fillSearchRaceFormWithoutReturnDate(String cityFrom, String cityTo, String departureDate, int adaultsNumber, int chilldernsNumber) {
+    public BookingFlightService fillSearchRaceFormWithoutReturnDate(String cityFrom, String cityTo, String departureDate, int adaultsNumber, int chilldernsNumber) {
         homePage.chooseAirportFrom(cityFrom);
         homePage.chooseAirportTo(cityTo);
         homePage.sendDepartureDateInput(departureDate);
@@ -26,11 +26,11 @@ public class HomePageService extends AbstractService {
         chooseChildrenNumber(chilldernsNumber);
         homePage.clickSavePassengersCountBtn();
         homePage.clickSearchBtn();
-        return  new BookingFlightPage(driver);
+        return  new BookingFlightService(driver);
     }
 
 
-    public BookingFlightPage fillSearchRaceFormWithReturnDate(String cityFrom, String cityTo, String departureDate, String returnDate,  int adultsNumber, int childrenNumber) {
+    public BookingFlightService fillSearchRaceFormWithReturnDate(String cityFrom, String cityTo, String departureDate, String returnDate,  int adultsNumber, int childrenNumber) {
         Wait.waitForPageLoaded(driver,10000);
         homePage.chooseAirportFrom(cityFrom);
         homePage.chooseAirportTo(cityTo);
@@ -42,7 +42,7 @@ public class HomePageService extends AbstractService {
         chooseChildrenNumber(childrenNumber);
         homePage.clickSavePassengersCountBtn();
         homePage.clickSearchBtn();
-        return  new BookingFlightPage(driver);
+        return  new BookingFlightService(driver);
     }
 
     public void chooseChildrenNumber(int childrenNumber) {

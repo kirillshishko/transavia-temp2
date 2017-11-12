@@ -37,6 +37,7 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     public void clickOutboundSelectedFlight() {
+        wait.waitForElementIsClickable(getInboundSelectedFlight().get(0));
         getInboundSelectedFlight().get(0).click();
     }
 
@@ -46,6 +47,7 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     public void clickInboundSelectedFlight() {
+        wait.waitForElementIsClickable(getInboundAviliableFlights().get(0));
         getInboundAviliableFlights().get(0).click();
     }
 

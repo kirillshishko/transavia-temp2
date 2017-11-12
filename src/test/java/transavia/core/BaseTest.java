@@ -1,6 +1,7 @@
 package transavia.core;
 
 import com.epam.mentoring.framework.ui_utils.PropertyProvider;
+import com.epam.mentoring.framework.ui_utils.Wait;
 import com.epam.mentoring.framework.webdriverfactory.FactoryDriver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
@@ -11,9 +12,12 @@ public class BaseTest {
     protected HomePageService homePageService;
 
     @BeforeSuite
-    public void setUp(){
+    public void setUp() {
         driver = FactoryDriver.getInstance();
         driver.get(PropertyProvider.getProperty("url"));
+        Wait.waitForPageLoaded(driver, Integer.parseInt(PropertyProvider.getProperty("pageload_timeout")));
+        Wait.pause(10000);
+        driver.navigate().refresh();
         homePageService = new HomePageService(driver);
     }
 

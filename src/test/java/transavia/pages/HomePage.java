@@ -94,8 +94,8 @@ public class HomePage extends AbstractPage {
         return getAirportFromInput().isDisplayed();
     }
 
-    public void  sendCityNameToAirportFromInput(String city){
-         getAirportFromInput().sendKeys(city);
+    public void sendCityNameToAirportFromInput(String city) {
+        getAirportFromInput().sendKeys(city);
     }
 
     public void selectAirportFrom(String city) {
@@ -111,7 +111,7 @@ public class HomePage extends AbstractPage {
         return airportFrom;
     }
 
-    public void clickAirportFrom(){
+    public void clickAirportFrom() {
         getAirportFrom().click();
     }
 
@@ -119,7 +119,7 @@ public class HomePage extends AbstractPage {
         return airportTo;
     }
 
-    public void clickAirportTo(){
+    public void clickAirportTo() {
         getAirportTo().click();
     }
 
@@ -136,7 +136,7 @@ public class HomePage extends AbstractPage {
         getAirportsToInput().click();
     }
 
-    public void  sendCityNameToAirportToInput(String city){
+    public void sendCityNameToAirportToInput(String city) {
         getAirportsToInput().sendKeys(city);
     }
 
@@ -144,14 +144,14 @@ public class HomePage extends AbstractPage {
         return getAirportsToInput().isDisplayed();
     }
 
-    public void chooseAirportFrom(String city){
+    public void chooseAirportFrom(String city) {
         clickAirportFromInput();
         sendCityNameToAirportFromInput(city);
         wait.waitForElementIsClickable(getAirportFrom());
         clickAirportFrom();
     }
 
-    public void chooseAirportTo(String city){
+    public void chooseAirportTo(String city) {
         clickAirportToInput();
         sendCityNameToAirportToInput(city);
         wait.waitForElementIsClickable(getAirportTo());
@@ -289,10 +289,12 @@ public class HomePage extends AbstractPage {
 
 
     public void sendDepartureDateInput(String date) {
+        getDepartureDateInput().clear();
         getDepartureDateInput().sendKeys(date);
     }
 
     public void sendReturnDateInput(String date) {
+        getReturnDateInput().clear();
         getReturnDateInput().sendKeys(date);
     }
 
@@ -306,7 +308,7 @@ public class HomePage extends AbstractPage {
 
         for (WebElement airport : airports) {
             if (airport.getText().contains(city))
-              //  Scroll.scrollToElement(driver,airport);
+                //  Scroll.scrollToElement(driver,airport);
                 airport.click();
         }
     }
