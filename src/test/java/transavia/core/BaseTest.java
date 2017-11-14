@@ -16,7 +16,7 @@ public class BaseTest {
         driver = FactoryDriver.getInstance();
         driver.get(PropertyProvider.getProperty("url"));
         Wait.waitForPageLoaded(driver, Integer.parseInt(PropertyProvider.getProperty("pageload_timeout")));
-        Wait.pause(10000);
+        Wait.pause(7000);
         driver.navigate().refresh();
         homePageService = new HomePageService(driver);
     }
