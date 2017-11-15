@@ -1,8 +1,8 @@
 package transavia.pages;
 
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class BookingDetailsPage extends AbstractPage {
@@ -12,21 +12,29 @@ public class BookingDetailsPage extends AbstractPage {
     }
 
     @FindBy(xpath = "//*[@class='front']")
-    private WebElement totalSum;
+    private CustomWebElement totalSum;
     @FindBy(xpath = "//*[contains(text(),'Transaction overview')]/following-sibling::div//*[@class='amount']")
-    private WebElement paymentAmount;
+    private CustomWebElement paymentAmount;
 
-    public String getTotalSum(){
+    public CustomWebElement getTotalSum() {
+        return totalSum;
+    }
+
+    public CustomWebElement getPaymentAmount() {
+        return paymentAmount;
+    }
+
+    public String getTotalSumText() {
 
         logger.info("get total sum");
-        System.out.println("total = " +totalSum.getText());
+        System.out.println("total = " + getTotalSum().getText());
         return totalSum.getText();
     }
 
-    public String getPaymentAmount(){
+    public String getPaymentAmountText() {
 
         logger.info("get payment amount");
-        System.out.println("amount = " +paymentAmount.getText());
+        System.out.println("amount = " + getPaymentAmount().getText());
         return paymentAmount.getText();
     }
 }

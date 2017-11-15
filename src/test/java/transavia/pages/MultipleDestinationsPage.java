@@ -1,8 +1,8 @@
 package transavia.pages;
 
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MultipleDestinationsPage extends AbstractPage {
@@ -12,35 +12,35 @@ public class MultipleDestinationsPage extends AbstractPage {
     }
 
     @FindBy(id = "openJawRouteSelection_DepartureStationOutbound-input")
-    private WebElement outboundFlightFromTextbox;
+    private CustomWebElement outboundFlightFromTextbox;
     @FindBy(xpath = "//*[@class='results']/li[1]")
-    private WebElement autocompleteFrom;
+    private CustomWebElement autocompleteFrom;
     @FindBy(id = "openJawRouteSelection_ArrivalStationOutbound-input")
-    private WebElement outboundFlightToTextbox;
+    private CustomWebElement outboundFlightToTextbox;
     @FindBy(xpath = "//ol[@class='results']/li[contains(@class,'item')]")
-    private WebElement autocompleteTo;
+    private CustomWebElement autocompleteTo;
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    private WebElement outboundFlightDateTextbox;
+    private CustomWebElement outboundFlightDateTextbox;
     @FindBy(id = "openJawRouteSelection_DepartureStationInbound-input")
-    private WebElement inboundFlightFromTextbox;
+    private CustomWebElement inboundFlightFromTextbox;
     @FindBy(id = "openJawRouteSelection_ArrivalStationInbound-input")
-    private WebElement inboundFlightToTextbox;
+    private CustomWebElement inboundFlightToTextbox;
     @FindBy(id = "dateSelection_InboundDate-datepicker")
-    private WebElement inboundFlightDateTextbox;
+    private CustomWebElement inboundFlightDateTextbox;
     @FindBy(xpath = ".//*[@class='date-picker-suggestions']/li[@class='highlight']")
-    private WebElement autocompleteDate;
+    private CustomWebElement autocompleteDate;
     @FindBy(xpath = ".//*[@class='panel_section-button-container']/button[@type='submit']")
-    private WebElement searchButton;
+    private CustomWebElement searchButton;
     @FindBy(xpath = ".//section[contains(@class,'outbound')]//div[@class='select']/span")
-    private WebElement outboundFlightSelectButton;
+    private CustomWebElement outboundFlightSelectButton;
     @FindBy(xpath = ".//section[contains(@class,'outbound')]//div[@class='actions']/div[1]")
-    private WebElement outboundFlightPrice;
+    private CustomWebElement outboundFlightPrice;
     @FindBy(xpath = ".//section[contains(@class,'inbound')]//div[@class='select']/span")
-    private WebElement inboundFlightSelectButton;
+    private CustomWebElement inboundFlightSelectButton;
     @FindBy(xpath = ".//section[contains(@class,'inbound')]//div[@class='actions']/div[1]")
-    private WebElement inboundFlightPrice;
+    private CustomWebElement inboundFlightPrice;
     @FindBy(xpath = "//*[@class='flipper']/div[@class='back']")
-    private WebElement totalAmount;
+    private CustomWebElement totalAmount;
 
 
     public void setOutboundFlightFrom(String cityFrom){

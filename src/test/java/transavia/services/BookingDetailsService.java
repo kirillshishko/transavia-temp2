@@ -14,6 +14,6 @@ public class BookingDetailsService extends  AbstractService{
 
     public boolean isTotalSumEqualsPaymentAmount(){
 
-        return bookingDetailsPage.getTotalSum().equals(bookingDetailsPage.getPaymentAmount());
+        return bookingDetailsPage.getTotalSumText().equals(bookingDetailsPage.getPaymentAmountText());
     }
 }

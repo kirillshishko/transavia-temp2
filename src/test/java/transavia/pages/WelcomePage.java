@@ -1,8 +1,8 @@
 package transavia.pages;
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import com.epam.mentoring.framework.ui_utils.Wait;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,16 +15,16 @@ public class WelcomePage extends AbstractPage {
     }
 
     @FindBy(css = ".component_language-switch")
-    private WebElement countryChoicePanel;
+    private CustomWebElement countryChoicePanel;
 
     @FindAll(@FindBy(xpath = "//div[@class='component_language-switch']//a/*"))
-    private List<WebElement> countryList;
+    private List<CustomWebElement> countryList;
 
     @FindBy(xpath = "//div[@class='component_language-switch']//*[contains(text(),'France')]")
-    private WebElement france;
+    private CustomWebElement france;
 
     @FindBy(xpath = "//a[@href='/en-EU/home']")
-    private WebElement otherCountryLink;
+    private CustomWebElement otherCountryLink;
 
     public void clickOtherCountryLink(){
 

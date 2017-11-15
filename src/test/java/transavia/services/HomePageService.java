@@ -2,7 +2,6 @@ package transavia.services;
 
 import com.epam.mentoring.framework.ui_utils.Wait;
 import org.openqa.selenium.WebDriver;
-import transavia.pages.BookingFlightPage;
 import transavia.pages.HomePage;
 
 public class HomePageService extends AbstractService {
@@ -13,9 +12,6 @@ public class HomePageService extends AbstractService {
         super(driver);
         homePage = new HomePage(driver);
     }
-
-
-
 
     public BookingFlightService fillSearchRaceFormWithoutReturnDate(String cityFrom, String cityTo, String departureDate, int adaultsNumber, int chilldernsNumber) {
         homePage.chooseAirportFrom(cityFrom);

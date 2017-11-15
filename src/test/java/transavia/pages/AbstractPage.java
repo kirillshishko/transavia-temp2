@@ -1,5 +1,6 @@
 package transavia.pages;
 
+import com.epam.mentoring.framework.decorator.CustomFieldDecorator;
 import com.epam.mentoring.framework.ui_utils.Wait;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -19,7 +20,7 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(this.driver,this);
+        PageFactory.initElements(new CustomFieldDecorator(driver),this);
         actions = new Actions(this.driver);
         wait = new Wait(driver);
 

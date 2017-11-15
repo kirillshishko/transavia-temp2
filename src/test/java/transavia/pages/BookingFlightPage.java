@@ -1,11 +1,13 @@
 package transavia.pages;
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import com.epam.mentoring.framework.ui_utils.Scroll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
 
 public class BookingFlightPage extends AbstractPage {
 
@@ -14,67 +16,63 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     @FindBy(xpath = "//div[contains(@class,'notification-error')]/p")
-    private WebElement errorMessage;
+    private CustomWebElement errorMessage;
 
     @FindBy(css = ".flight.outbound .day.day-with-availability")
-    private List<WebElement> outboundAviliableFlights;
+    private List<CustomWebElement> outboundAvilableFlights;
 
     @FindBy(css = ".flight.inbound .day.day-with-availability")
-    private List<WebElement> inboundAvailiableFlights;
+    private List<CustomWebElement> inboundAvailableFlights;
 
-    @FindBy(css = ".panel-total button[name=\"next_button\"]")
-    private WebElement nextBtn;
+    @FindBy(css = ".display-table .button-primary")
+    private CustomWebElement nextBtn;
 
     @FindBy(css = ".outbound .flight-result-button")
-    private List<WebElement> outboundFlightTimeSelectBtn;
+    private List<CustomWebElement> outboundFlightTimeSelectBtn;
 
     @FindBy(css = ".inbound .flight-result-button")
-    private List<WebElement> inboundFlightTimeSelectBtn;
+    private List<CustomWebElement> inboundFlightTimeSelectBtn;
 
     public String getErrorMessageText() {
         return getErrorMessage().getText();
     }
 
-    public WebElement getErrorMessage() {
+    public CustomWebElement getErrorMessage() {
         return errorMessage;
     }
 
-    public WebElement getNextBtn() {
+    public CustomWebElement getNextBtn() {
         return nextBtn;
     }
 
-    public List<WebElement> getInboundSelectedFlight() {
-        return inboundAvailiableFlights;
-    }
-
-    public List<WebElement> getInboundFlightTimeSelectBtns(){
+    public List<CustomWebElement> getInboundFlightTimeSelectBtns(){
         return inboundFlightTimeSelectBtn;
     }
 
-    public  List<WebElement> getOutboundAviliableFlights(){
-        return outboundAviliableFlights;
+    public  List<CustomWebElement> getOutboundAvailableFlights(){
+        return outboundAvilableFlights;
     }
 
-    public List<WebElement> getOutboundFlightTimeSelectBtns(){
+    public List<CustomWebElement> getOutboundFlightTimeSelectBtns(){
         return outboundFlightTimeSelectBtn;
     }
 
-    public List<WebElement> getInboundAvailiableFlights() {
-        return inboundAvailiableFlights;
+    public List<CustomWebElement> getInboundAvailableFlights() {
+        return inboundAvailableFlights;
     }
 
     public void clickFirstOutboundSelectedFlight() {
-        wait.waitForElementIsClickable(getOutboundAviliableFlights().get(0));
+        wait.waitForElementIsClickable(getOutboundAvailableFlights().get(0));
         logger.info("select first outbound selected flight");
-        getOutboundAviliableFlights().get(0).click();
+        getOutboundAvailableFlights().get(0).click();
     }
 
 
     public void clickFirstInboundAvailableFlight() {
-        wait.waitForElementIsClickable(getInboundSelectedFlight().get(0));
-        logger.info("select first inbound avaliable flight");
-        Scroll.scrollToElement(driver,getInboundAvailiableFlights().get(0));
-        getInboundAvailiableFlights().get(0).click();
+        wait.waitForElementIsClickable(getInboundAvailableFlights().get(0));
+        logger.info("select first inbound available flight");
+        Scroll.scrollToElement(driver, getInboundAvailableFlights().get(0));
+        getInboundAvailableFlights().get(0).click();
         wait.pause(2000);
     }
 
@@ -96,7 +94,8 @@ public class BookingFlightPage extends AbstractPage {
 
 
     public void clickNextBtn(){
-        wait.waitForElementIsClickable(getNextBtn());
-        getNextBtn().click();
+        Actions action = new Actions(driver);
+        action.click(getNextBtn()).build().perform();
+        //getNextBtn().click();
     }
 }

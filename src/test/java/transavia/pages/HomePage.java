@@ -1,10 +1,8 @@
 package transavia.pages;
 
-import com.epam.mentoring.framework.ui_utils.Wait;
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 
 import java.util.List;
 
@@ -15,61 +13,61 @@ public class HomePage extends AbstractPage {
     }
 
     @FindBy(id = "routeSelection_DepartureStation-input")
-    private WebElement airportFromInput;
+    private CustomWebElement airportFromInput;
 
     @FindBy(id = "routeSelection_ArrivalStation-input")
-    private WebElement airportToInput;
+    private CustomWebElement airportToInput;
 
     @FindBy(xpath = ".//input[@id=\"routeSelection_DepartureStation-input\"]/..//li")
-    private List<WebElement> airportFromDDL;
+    private List<CustomWebElement> airportFromDDL;
 
     @FindBy(xpath = ".//input[@id=\"routeSelection_DepartureStation-input\"]/..//li")
-    private WebElement airportFrom;
+    private CustomWebElement airportFrom;
 
     @FindBy(xpath = ".//input[@id=\"routeSelection_ArrivalStation-input\"]/..//li")
-    private List<WebElement> airportToDDL;
+    private List<CustomWebElement> airportToDDL;
 
     @FindBy(xpath = ".//input[@id=\"routeSelection_ArrivalStation-input\"]/..//li")
-    private WebElement airportTo;
+    private CustomWebElement airportTo;
 
     @FindBy(css = ".label--bold--bp0")
-    private WebElement returnOnCheckbox;
+    private CustomWebElement returnOnCheckbox;
 
     @FindBy(id = "dateSelection_IsReturnFlight-datepicker")
-    private WebElement returnDateInput;
+    private CustomWebElement returnDateInput;
 
     @FindBy(id = "dateSelection_OutboundDate-datepicker")
-    private WebElement departureDateInput;
+    private CustomWebElement departureDateInput;
 
     @FindBy(id = "booking-passengers-input")
-    private WebElement passengersInputBtn;
+    private CustomWebElement passengersInputBtn;
 
     @FindBy(css = ".desktop .button-primary")
-    private WebElement searchBtn;
+    private CustomWebElement searchBtn;
 
     @FindBy(css = ".selectfield.adults .decrease")
-    private WebElement adultsDecreaseBtn;
+    private CustomWebElement adultsDecreaseBtn;
 
     @FindBy(css = ".selectfield.adults .increase")
-    private WebElement adultsIncreaseBtn;
+    private CustomWebElement adultsIncreaseBtn;
 
     @FindBy(css = ".selectfield.children .decrease")
-    private WebElement childrensDecreaseBtn;
+    private CustomWebElement childrensDecreaseBtn;
 
     @FindBy(css = ".selectfield.children .increase")
-    private WebElement childrensIncreaseBtn;
+    private CustomWebElement childrensIncreaseBtn;
 
     @FindBy(css = ".close")
-    private WebElement savePassengersCountBtn;
+    private CustomWebElement savePassengersCountBtn;
 
     @FindBy(xpath = "//li[@class='primary-navigation_item']/a[text()[contains(.,'Manage your booking')]]")
-    private WebElement manageYourBookingBtn;
+    private CustomWebElement manageYourBookingBtn;
 
     @FindBy(xpath = "//span[@class=\"sub-navigation-level-1_link-text\" and contains(text(),\"View your booking\")]")
-    private WebElement viewYourBooking;
+    private CustomWebElement viewYourBooking;
 
 
-    public WebElement getViewYourBooking() {
+    public CustomWebElement getViewYourBooking() {
         return viewYourBooking;
     }
 
@@ -77,11 +75,11 @@ public class HomePage extends AbstractPage {
         return getViewYourBooking().isDisplayed();
     }
 
-    public WebElement getManageYourBookingBtn() {
+    public CustomWebElement getManageYourBookingBtn() {
         return manageYourBookingBtn;
     }
 
-    public WebElement getAirportFromInput() {
+    public CustomWebElement getAirportFromInput() {
         return airportFromInput;
 
     }
@@ -98,16 +96,7 @@ public class HomePage extends AbstractPage {
         getAirportFromInput().sendKeys(city);
     }
 
-    public void selectAirportFrom(String city) {
-        Wait.pause(7000);
-        wait.waitForPageLoaded(driver, 10000);
-        wait.waitForElementIsClickable(getAirportFromInput());
-        clickAirportFromInput();
-
-        selectAirport(true, city);
-    }
-
-    public WebElement getAirportFrom() {
+    public CustomWebElement getAirportFrom() {
         return airportFrom;
     }
 
@@ -115,7 +104,7 @@ public class HomePage extends AbstractPage {
         getAirportFrom().click();
     }
 
-    public WebElement getAirportTo() {
+    public CustomWebElement getAirportTo(){
         return airportTo;
     }
 
@@ -123,12 +112,10 @@ public class HomePage extends AbstractPage {
         getAirportTo().click();
     }
 
-    public List<WebElement> getAirportsFromDDL() {
-        return airportFromDDL;
-    }
 
 
-    public WebElement getAirportsToInput() {
+
+    public CustomWebElement getAirportsToInput() {
         return airportToInput;
     }
 
@@ -158,17 +145,8 @@ public class HomePage extends AbstractPage {
         clickAirportTo();
     }
 
-    public void selectAirportTo(String city) {
-        clickAirportFromInput();
-        Wait.pause(6000);
-        selectAirport(false, city);
-    }
 
-    public List<WebElement> getAirportsToDDL() {
-        return airportToDDL;
-    }
-
-    public WebElement getDepartureDateInput() {
+    public CustomWebElement getDepartureDateInput() {
         return departureDateInput;
     }
 
@@ -176,7 +154,7 @@ public class HomePage extends AbstractPage {
         return getDepartureDateInput().isDisplayed();
     }
 
-    public WebElement getReturnDateInput() {
+    public CustomWebElement getReturnDateInput() {
         return returnDateInput;
     }
 
@@ -188,7 +166,7 @@ public class HomePage extends AbstractPage {
         return getReturnDateInput().getText();
     }
 
-    public WebElement getReturnOnCheckbox() {
+    public CustomWebElement getReturnOnCheckbox() {
         return returnOnCheckbox;
     }
 
@@ -200,7 +178,7 @@ public class HomePage extends AbstractPage {
         return getReturnOnCheckbox().isDisplayed();
     }
 
-    public WebElement getPassengersInputBtn() {
+    public CustomWebElement getPassengersInputBtn() {
         return passengersInputBtn;
     }
 
@@ -212,7 +190,7 @@ public class HomePage extends AbstractPage {
         return getPassengersInputBtn().isDisplayed();
     }
 
-    public WebElement getSearchBtn() {
+    public CustomWebElement getSearchBtn() {
         return searchBtn;
     }
 
@@ -224,7 +202,7 @@ public class HomePage extends AbstractPage {
         return getSearchBtn().isDisplayed();
     }
 
-    public WebElement getAdultsDecreaseBtn() {
+    public CustomWebElement getAdultsDecreaseBtn() {
         return adultsDecreaseBtn;
     }
 
@@ -236,7 +214,7 @@ public class HomePage extends AbstractPage {
         return getAdultsDecreaseBtn().isDisplayed();
     }
 
-    public WebElement getAdultsIncreaseBtn() {
+    public CustomWebElement getAdultsIncreaseBtn() {
         return adultsIncreaseBtn;
     }
 
@@ -249,7 +227,7 @@ public class HomePage extends AbstractPage {
         return getAdultsIncreaseBtn().isDisplayed();
     }
 
-    public WebElement getChildrensDecreaseBtn() {
+    public CustomWebElement getChildrensDecreaseBtn() {
         return childrensDecreaseBtn;
     }
 
@@ -261,7 +239,7 @@ public class HomePage extends AbstractPage {
         return getChildrensDecreaseBtn().isDisplayed();
     }
 
-    public WebElement getChildrensIncreaseBtn() {
+    public CustomWebElement getChildrensIncreaseBtn() {
         return childrensIncreaseBtn;
     }
 
@@ -275,7 +253,7 @@ public class HomePage extends AbstractPage {
     }
 
 
-    public WebElement getSavePassengersCountBtn() {
+    public CustomWebElement getSavePassengersCountBtn() {
         return savePassengersCountBtn;
     }
 
@@ -298,20 +276,6 @@ public class HomePage extends AbstractPage {
         getReturnDateInput().sendKeys(date);
     }
 
-    private void selectAirport(boolean isFrom, String city) {
-        List<WebElement> airports = null;
-        if (isFrom) {
-            airports = getAirportsFromDDL();
-        } else {
-            airports = getAirportsToDDL();
-        }
-
-        for (WebElement airport : airports) {
-            if (airport.getText().contains(city))
-                //  Scroll.scrollToElement(driver,airport);
-                airport.click();
-        }
-    }
 
 
 }

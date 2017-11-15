@@ -1,7 +1,7 @@
 package transavia.pages;
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class AdvancedSearchPage extends AbstractPage {
@@ -11,9 +11,9 @@ public class AdvancedSearchPage extends AbstractPage {
     }
 
     @FindBy(id = "countryStationSelection_Origin-input")
-    private WebElement countryFromTextbox;
+    private CustomWebElement countryFromTextbox;
     @FindBy(id = "countryStationSelection_Destination-input")
-    private WebElement countryToTextbox;
+    private CustomWebElement countryToTextbox;
 
     
 }

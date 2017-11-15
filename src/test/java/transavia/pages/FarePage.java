@@ -1,8 +1,8 @@
 package transavia.pages;
 
 
+import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class FarePage extends AbstractPage {
@@ -11,11 +11,11 @@ public class FarePage extends AbstractPage {
     }
 
     @FindBy(xpath = "//tfoot//button[@value='B'][1]")
-    private WebElement selectButton;
+    private CustomWebElement selectButton;
     @FindBy(xpath = "//tfoot//td[2]//*[contains(@class,'pull-right')]")
-    private WebElement priceForPerson;
+    private CustomWebElement priceForPerson;
     @FindBy(xpath = "//*[@class='flipper']/div[@class='front']")
-    private WebElement totalPrice;
+    private CustomWebElement totalPrice;
 
     public void clickSelectButton(){
 
@@ -30,6 +30,7 @@ public class FarePage extends AbstractPage {
         wait.waitForPageLoaded(driver,10000);
         wait.waitForElementAppearing(priceForPerson);
         String personPrice = priceForPerson.getText();
+
         String price = personPrice.substring(2,personPrice.length());
         double priceDouble = Double.parseDouble(price);
         System.out.println("price for person : " +priceDouble);

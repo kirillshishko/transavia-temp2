@@ -1,8 +1,8 @@
 package transavia.pages;
 
-import org.openqa.selenium.JavascriptExecutor;
+import com.epam.mentoring.framework.decorator.CustomWebElement;
+import com.epam.mentoring.framework.ui_utils.Scroll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HandLuggagePage extends AbstractPage {
@@ -12,29 +12,30 @@ public class HandLuggagePage extends AbstractPage {
     }
 
     @FindBy(css = ".content-text-color iframe")
-    private WebElement video;
+    private CustomWebElement video;
 
     @FindBy(css = ".ytp-large-play-button")
-    private WebElement playButton;
+    private CustomWebElement playButton;
+
+    public CustomWebElement getVideo() {
+        return video;
+    }
+
+    public CustomWebElement getPlayButton() {
+        return playButton;
+    }
 
     public String getVideoLink(){
-        String coordinats = video.getLocation().toString();
-        System.out.println("COORD : " +coordinats);
-        String jsScript = "window.scroll" + coordinats;
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript(jsScript);
-        wait.waitForElementIsClickable(video);
-        logger.info("get link");
-        return video.getAttribute("scr");
+        wait.waitForElementIsClickable(getVideo());
+        Scroll.scrollToElement(driver,getVideo());
+        logger.info("get video link");
+        return getVideo().getAttribute("scr");
     }
 
     public void clickPlayButton(){
-        String coordinats = playButton.getLocation().toString();
-        String jsScript = "window.scroll" + coordinats;
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
-        executor.executeScript(jsScript);
-        wait.waitForElementIsClickable(playButton);
-        playButton.click();
+        wait.waitForElementIsClickable(getPlayButton());
+        Scroll.scrollToElement(driver,getPlayButton());
+        getPlayButton().click();
         logger.info("click play button");
     }
 }
