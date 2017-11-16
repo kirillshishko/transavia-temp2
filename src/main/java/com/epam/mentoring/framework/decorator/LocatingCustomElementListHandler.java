@@ -11,18 +11,18 @@ import java.util.List;
 
 public class LocatingCustomElementListHandler implements InvocationHandler {
     private final ElementLocator locator;
-    private final Class<IElement> clazz;
+    private final Class<WebElement> clazz;
 
-    public LocatingCustomElementListHandler(ElementLocator locator, Class<IElement> clazz) {
+    public LocatingCustomElementListHandler(ElementLocator locator, Class<WebElement> clazz) {
         this.locator = locator;
         this.clazz = clazz;
     }
 
     public Object invoke(Object object, Method method, Object[] objects) throws Throwable {
-        List<WebElement> elements = locator.findElements();
-        List<IElement> customs = new ArrayList<IElement>();
+        List<org.openqa.selenium.WebElement> elements = locator.findElements();
+        List<WebElement> customs = new ArrayList<WebElement>();
 
-        for (WebElement element : elements) {
+        for (org.openqa.selenium.WebElement element : elements) {
             customs.add(WrapperFactory.createInstance(clazz, element));
         }
         try {

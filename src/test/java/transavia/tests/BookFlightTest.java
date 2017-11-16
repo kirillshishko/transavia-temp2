@@ -1,5 +1,6 @@
 package transavia.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import transavia.core.BaseTest;
 
@@ -8,7 +9,7 @@ public class BookFlightTest extends BaseTest {
     public void checkBookFlightTotalPrice(){
 
 
-        homePageService.fillSearchRaceFormWithoutReturnDate("Amsterdam", "Paris", "15 nov 2017", 2,1 ).checkBookingFlightTotalPrice();
+        Assert.assertTrue(homePageService.fillSearchRaceFormWithoutReturnDate("Amsterdam", "Paris", "18 nov 2017", 2,1 ).selectFirstFlights().compareTicketsPrice());
     }
 
 }

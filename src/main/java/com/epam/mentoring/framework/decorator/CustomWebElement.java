@@ -6,115 +6,98 @@ import org.openqa.selenium.*;
 
 import java.util.List;
 
-public class CustomWebElement implements WebElement {
-    private WebElement element;
+public class CustomWebElement implements  WebElement{
+    private WebElement webElement;
     private Logger logger = LogManager.getRootLogger();
 
-    public CustomWebElement(WebElement element){
-        this.element = element;
+    public CustomWebElement(WebElement webElement) {
+        this.webElement = webElement;
     }
 
     @Override
     public void click() {
-        logger.info("click element:  " + element.getText());
-        element.click();
+        logger.info("click webElement:  " + webElement.getText());
+        webElement.click();
 
     }
 
-    @Override
     public void submit() {
-        logger.info("Submit element : " +element);
-        element.submit();
+        logger.info("Submit webElement : " + webElement);
+        webElement.submit();
     }
 
-
-    @Override
     public void sendKeys(CharSequence... charSequences) {
-        logger.info("SendKeys to  element :  " +element.getText());
-        element.sendKeys(charSequences);
+        logger.info("SendKeys to  webElement :  " + webElement.getText());
+        webElement.sendKeys(charSequences);
     }
 
-    @Override
     public void clear() {
-        logger.info("Clear element : " +element.getText());
-        element.clear();
+        logger.info("Clear webElement : " + webElement.getText());
+        webElement.clear();
     }
 
-    @Override
     public String getTagName() {
-        logger.info("Get tag name  : "+element.getTagName());
-        return element.getTagName();
+        logger.info("Get tag name  : " + webElement.getTagName());
+        return webElement.getTagName();
     }
 
-    @Override
     public String getAttribute(String s) {
-        logger.info("Get attribute of   : " +element.getAttribute(s));
-        return element.getAttribute(s);
+        logger.info("Get attribute of   : " + webElement.getAttribute(s));
+        return webElement.getAttribute(s);
     }
 
-    @Override
     public boolean isSelected() {
-        logger.info("Is element "+element + " selected ");
-        return element.isSelected();
+        logger.info("Is webElement " + webElement + " selected ");
+        return webElement.isSelected();
     }
 
-    @Override
     public boolean isEnabled() {
-        logger.info("Is element "+element + " enabled ");
-        return element.isEnabled();
+        logger.info("Is webElement " + webElement + " enabled ");
+        return webElement.isEnabled();
     }
 
-    @Override
     public String getText() {
-        logger.info("Get text of " +element.getText());
-        return element.getText();
+        logger.info("Get text of " + webElement.getText());
+        return webElement.getText();
     }
 
-    @Override
     public List<WebElement> findElements(By by) {
-        logger.info("Find elements by : "+by);
-        return element.findElements(by);
+        logger.info("Find elements by : " + by);
+        return webElement.findElements(by);
     }
 
-    @Override
     public WebElement findElement(By by) {
-        logger.info("Find element by :" +by);
-        return element.findElement(by);
+        logger.info("Find webElement by :" + by);
+        return webElement.findElement(by);
     }
 
-    @Override
     public boolean isDisplayed() {
-        logger.info("Is element "+element + " displayed");
-        return element.isDisplayed();
+        logger.info("Is webElement " + webElement + " displayed");
+        return webElement.isDisplayed();
     }
 
-    @Override
     public Point getLocation() {
-        logger.info("Get location of : "+element);
-        return element.getLocation();
+        logger.info("Get location of : " + webElement);
+        return webElement.getLocation();
     }
 
-    @Override
     public Dimension getSize() {
-        logger.info("Get dimension of : "+element);
-        return element.getSize();
+        logger.info("Get dimension of : " + webElement);
+        return webElement.getSize();
     }
 
-    @Override
     public Rectangle getRect() {
-        logger.info("Get location and size of : "+element);
-        return element.getRect();
+        logger.info("Get location and size of : " + webElement);
+        return webElement.getRect();
     }
 
-    @Override
     public String getCssValue(String s) {
-        logger.info("Get css value of : "+element);
-        return element.getCssValue(s);
+        logger.info("Get css value of : " + webElement);
+        return webElement.getCssValue(s);
     }
 
-    @Override
     public <X> X getScreenshotAs(OutputType<X> outputType) throws WebDriverException {
-        logger.info("Get screenshot of : " +element);
-        return element.getScreenshotAs(outputType);
+        logger.info("Get screenshot of : " + webElement);
+        return webElement.getScreenshotAs(outputType);
     }
 }

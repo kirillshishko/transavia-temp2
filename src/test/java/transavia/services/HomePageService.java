@@ -41,14 +41,20 @@ public class HomePageService extends AbstractService {
         return  new BookingFlightService(driver);
     }
 
+    public LoginService goToBookingViewPage(){
+        homePage.clickManageYorBooking();
+        homePage.clickViewYourBooking();
+        return new LoginService(driver);
+    }
+
     public void chooseChildrenNumber(int childrenNumber) {
-        for (int i = 0; i < childrenNumber - 1; i++) {
+        for (int i = 0; i < childrenNumber ; i++) {
             homePage.clickChildrensIncreaseBtn();
         }
     }
 
     private void chooseAdultsNumber(int adultsNumber) {
-        for (int i = 0; i < adultsNumber - 1; i++) {
+        for (int i = 0; i < adultsNumber-1 ; i++) {
             homePage.clickAdultsIncreaseBtn();
         }
     }

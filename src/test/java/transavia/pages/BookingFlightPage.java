@@ -24,7 +24,7 @@ public class BookingFlightPage extends AbstractPage {
     @FindBy(css = ".flight.inbound .day.day-with-availability")
     private List<CustomWebElement> inboundAvailableFlights;
 
-    @FindBy(css = ".display-table .button-primary")
+    @FindBy(css = ".panel-total button")
     private CustomWebElement nextBtn;
 
     @FindBy(css = ".outbound .flight-result-button")
@@ -45,15 +45,15 @@ public class BookingFlightPage extends AbstractPage {
         return nextBtn;
     }
 
-    public List<CustomWebElement> getInboundFlightTimeSelectBtns(){
+    public List<CustomWebElement> getInboundFlightTimeSelectBtns() {
         return inboundFlightTimeSelectBtn;
     }
 
-    public  List<CustomWebElement> getOutboundAvailableFlights(){
+    public List<CustomWebElement> getOutboundAvailableFlights() {
         return outboundAvilableFlights;
     }
 
-    public List<CustomWebElement> getOutboundFlightTimeSelectBtns(){
+    public List<CustomWebElement> getOutboundFlightTimeSelectBtns() {
         return outboundFlightTimeSelectBtn;
     }
 
@@ -65,6 +65,7 @@ public class BookingFlightPage extends AbstractPage {
         wait.waitForElementIsClickable(getOutboundAvailableFlights().get(0));
         logger.info("select first outbound selected flight");
         getOutboundAvailableFlights().get(0).click();
+        wait.pause(2000);
     }
 
 
@@ -76,26 +77,28 @@ public class BookingFlightPage extends AbstractPage {
         wait.pause(2000);
     }
 
-    public void clickFirstInboundFlightTimeSelectBtn(){
+    public void clickFirstInboundFlightTimeSelectBtn() {
         wait.waitForElementIsClickable(getInboundFlightTimeSelectBtns().get(0));
         logger.info("select first  time  of inbound flight");
-        Scroll.scrollToElement(driver,getInboundFlightTimeSelectBtns().get(0));
+        Scroll.scrollToElement(driver, getInboundFlightTimeSelectBtns().get(0));
         getInboundFlightTimeSelectBtns().get(0).click();
 
     }
 
-    public void clickFirstOutboundFlightTimeSelectBtn(){
+    public void clickFirstOutboundFlightTimeSelectBtn() {
         wait.waitForElementIsClickable(getOutboundFlightTimeSelectBtns().get(0));
         logger.info("select first  time  of outbound flight");
         getOutboundFlightTimeSelectBtns().get(0).click();
-        wait.pause(2000);
+
 
     }
 
 
-    public void clickNextBtn(){
-        Actions action = new Actions(driver);
-        action.click(getNextBtn()).build().perform();
-        //getNextBtn().click();
+    public void clickNextBtn() {
+   /*     Actions action = new Actions(driver);
+        action.moveToElement(getNextBtn()).build().perform();*/
+        wait.pause(3000);
+        wait.waitForElementIsClickable(getNextBtn());
+        getNextBtn().click();
     }
 }

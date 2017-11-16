@@ -22,13 +22,13 @@ public class BookingFlightService extends AbstractService {
 
     }
 
-    public BookingFlightService checkBookingFlightTotalPrice(){
+    public BookingFareService selectFirstFlights(){
         bookingFlightPage.clickFirstOutboundSelectedFlight();
         bookingFlightPage.clickFirstOutboundFlightTimeSelectBtn();
         bookingFlightPage.clickFirstInboundAvailableFlight();
         bookingFlightPage.clickFirstInboundFlightTimeSelectBtn();
         bookingFlightPage.clickNextBtn();
 
-        return new BookingFlightService(driver);
+        return new BookingFareService(driver);
     }
 }

@@ -17,6 +17,10 @@ public class BookingViewService extends AbstractService {
        return bookingViewPage.getBookingNumberText() + " " + bookingViewPage.getDepartureDateText();
     }
 
+    public  boolean  compareBookingData(String expectedBookingData){
+        return  getBookingData().equals(expectedBookingData);
+    }
+
     public BookingDetailsService navigateToBookingDetailsPage(){
 
         bookingViewPage.clickBookingDetailsButton();

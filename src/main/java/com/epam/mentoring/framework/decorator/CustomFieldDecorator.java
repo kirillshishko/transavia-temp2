@@ -18,8 +18,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
 
     @Override
     public Object decorate(ClassLoader loader, Field field) {
-        Class<IElement> decoratableClass = decoratableClass(field);
-        // если класс поля декорируемый
+        Class<WebElement> decoratableClass = decoratableClass(field);
         if (decoratableClass != null) {
             ElementLocator locator = factory.createLocator(field);
             if (locator == null) {
@@ -35,51 +34,47 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
         return super.decorate(loader, field);
     }
 
-    @SuppressWarnings("unchecked")
-    private Class<IElement> decoratableClass(Field field) {
+    private Class<WebElement> decoratableClass(Field field) {
 
         Class<?> clazz = field.getType();
 
         if (List.class.isAssignableFrom(clazz)) {
 
-            // для списка обязательно должна быть задана аннотация
             if (field.getAnnotation(FindBy.class) == null &&
                     field.getAnnotation(FindBys.class) == null) {
                 return null;
             }
 
-            // Список должен быть параметризирован
             Type genericType = field.getGenericType();
             if (!(genericType instanceof ParameterizedType)) {
                 return null;
             }
-            // получаем класс для элементов списка
             clazz = (Class<?>) ((ParameterizedType) genericType).
                     getActualTypeArguments()[0];
         }
 
-        if (IElement.class.isAssignableFrom(clazz)) {
-            return (Class<IElement>) clazz;
+        if (WebElement.class.isAssignableFrom(clazz)) {
+            return (Class<WebElement>) clazz;
         } else {
             return null;
         }
     }
 
-    protected IElement createElement(ClassLoader loader, ElementLocator locator,
-                                     Class<IElement> clazz) {
-        WebElement proxy = proxyForLocator(loader, locator);
+    protected WebElement createElement(ClassLoader loader, ElementLocator locator,
+                                       Class<WebElement> clazz) {
+        org.openqa.selenium.WebElement proxy = proxyForLocator(loader, locator);
         return WrapperFactory.createInstance(clazz, proxy);
     }
 
     @SuppressWarnings("unchecked")
-    protected List<IElement> createList(ClassLoader loader,
-                                        ElementLocator locator,
-                                        Class<IElement> clazz) {
+    protected List<WebElement> createList(ClassLoader loader,
+                                          ElementLocator locator,
+                                          Class<WebElement> clazz) {
 
         InvocationHandler handler =
                 new LocatingCustomElementListHandler(locator, clazz);
-        List<IElement> elements =
-                (List<IElement>) Proxy.newProxyInstance(
+        List<WebElement> elements =
+                (List<WebElement>) Proxy.newProxyInstance(
                         loader, new Class[] {List.class}, handler);
         return elements;
     }

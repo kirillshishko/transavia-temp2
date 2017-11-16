@@ -75,9 +75,15 @@ public class HomePage extends AbstractPage {
         return getViewYourBooking().isDisplayed();
     }
 
+    public void clickViewYourBooking(){
+        getViewYourBooking().click();
+    }
+
     public CustomWebElement getManageYourBookingBtn() {
         return manageYourBookingBtn;
     }
+
+    public void clickManageYorBooking(){getManageYourBookingBtn().click();}
 
     public CustomWebElement getAirportFromInput() {
         return airportFromInput;

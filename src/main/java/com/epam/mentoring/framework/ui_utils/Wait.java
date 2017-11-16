@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 public class Wait {
     private WebDriver driverWait;
     private org.openqa.selenium.support.ui.Wait<WebDriver> wait;
-    private WebElement element;
 
     public Wait(WebDriver driver) {
         this.driverWait = driver;
