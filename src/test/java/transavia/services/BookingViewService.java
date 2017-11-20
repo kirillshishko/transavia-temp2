@@ -21,7 +21,7 @@ public class BookingViewService extends AbstractService {
         return  getBookingData().equals(expectedBookingData);
     }
 
-    public BookingDetailsService navigateToBookingDetailsPage(){
+    public BookingDetailsService goToBookingDetailsPage(){
 
         bookingViewPage.clickBookingDetailsButton();
 

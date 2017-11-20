@@ -3,7 +3,7 @@ package transavia.tests;
 import org.testng.annotations.Test;
 import transavia.core.BaseTest;
 
-public class BookingTimeTest extends BaseTest {
+public class BookingViewTest extends BaseTest {
     private String bookingNumber = "MF8C9R";
     private String lastName = "Kukharau";
     private String flightDate = "9 June 2016";
@@ -14,4 +14,6 @@ public class BookingTimeTest extends BaseTest {
     public void checkBookFlightTotalPrice() {
         homePageService.goToBookingViewPage().fillingBookingData(bookingNumber,lastName,flightDate).compareBookingData(bookingData);
     }
+
+
 }

@@ -25,9 +25,6 @@ public class HomePage extends AbstractPage {
     private CustomWebElement airportFrom;
 
     @FindBy(xpath = ".//input[@id=\"routeSelection_ArrivalStation-input\"]/..//li")
-    private List<CustomWebElement> airportToDDL;
-
-    @FindBy(xpath = ".//input[@id=\"routeSelection_ArrivalStation-input\"]/..//li")
     private CustomWebElement airportTo;
 
     @FindBy(css = ".label--bold--bp0")
@@ -66,6 +63,27 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//span[@class=\"sub-navigation-level-1_link-text\" and contains(text(),\"View your booking\")]")
     private CustomWebElement viewYourBooking;
 
+    @FindBy(xpath = "li[@class='primary-navigation_item']/a[text()[contains(.,'Service')]]")
+    private CustomWebElement serviceBtn;
+
+    @FindBy(xpath = "li[@class='primary-navigation_item']/a[text()[contains(.,'Plan and book')]]")
+    private CustomWebElement handLuggageBtn;
+
+    public CustomWebElement getHandLuggageBtn() {
+        return handLuggageBtn;
+    }
+
+    public void clickHandLaggageBtn(){
+        getHandLuggageBtn().click();
+    }
+
+    public CustomWebElement getServiceBtn() {
+        return serviceBtn;
+    }
+
+    public void clickServiceBtn(){
+        getServiceBtn().click();
+    }
 
     public CustomWebElement getViewYourBooking() {
         return viewYourBooking;
@@ -121,20 +139,20 @@ public class HomePage extends AbstractPage {
 
 
 
-    public CustomWebElement getAirportsToInput() {
+    public CustomWebElement getAirportToInput() {
         return airportToInput;
     }
 
     public void clickAirportToInput() {
-        getAirportsToInput().click();
+        getAirportToInput().click();
     }
 
     public void sendCityNameToAirportToInput(String city) {
-        getAirportsToInput().sendKeys(city);
+        getAirportToInput().sendKeys(city);
     }
 
     public boolean isAirportToInputDisplayed() {
-        return getAirportsToInput().isDisplayed();
+        return getAirportToInput().isDisplayed();
     }
 
     public void chooseAirportFrom(String city) {

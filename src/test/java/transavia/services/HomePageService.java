@@ -2,6 +2,7 @@ package transavia.services;
 
 import com.epam.mentoring.framework.ui_utils.Wait;
 import org.openqa.selenium.WebDriver;
+import transavia.pages.HandLuggagePage;
 import transavia.pages.HomePage;
 
 public class HomePageService extends AbstractService {
@@ -39,6 +40,12 @@ public class HomePageService extends AbstractService {
         homePage.clickSavePassengersCountBtn();
         homePage.clickSearchBtn();
         return  new BookingFlightService(driver);
+    }
+
+    public HandLuggagePage goToHandLaggagePage(){
+        homePage.clickServiceBtn();
+        homePage.clickHandLaggageBtn();
+        return  new HandLuggagePage(driver);
     }
 
     public LoginService goToBookingViewPage(){
