@@ -42,7 +42,7 @@ public class BookingViewPage extends AbstractPage {
             return getDepartureDate().getText();
         }
     public void clickBookingDetailsButton(){
-        wait.waitForElementIsClickable(getBookingDetailsButton());
+        wait.forElementIsClickable(getBookingDetailsButton());
         logger.info("click 'Booking details' button");
         getBookingDetailsButton().click();
     }

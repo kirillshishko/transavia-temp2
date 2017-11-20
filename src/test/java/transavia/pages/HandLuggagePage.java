@@ -11,11 +11,14 @@ public class HandLuggagePage extends AbstractPage {
         super(driver);
     }
 
-    @FindBy(css = ".content-text-color iframe")
+    @FindBy(css = ".video iframe")
     private CustomWebElement video;
 
     @FindBy(css = ".ytp-large-play-button")
     private CustomWebElement playButton;
+
+    @FindBy(css = ".ytp-title-link.yt-uix-sessionlink")
+    private CustomWebElement videoLink;
 
     public CustomWebElement getVideo() {
         return video;
@@ -25,15 +28,19 @@ public class HandLuggagePage extends AbstractPage {
         return playButton;
     }
 
-    public String getVideoLink(){
-        wait.waitForElementIsClickable(getVideo());
+    public CustomWebElement getVideoLink() {
+        return videoLink;
+    }
+
+    public void clickVideoLink(){
+        wait.forElementIsClickable(getVideo());
         Scroll.scrollToElement(driver,getVideo());
-        logger.info("get video link");
-        return getVideo().getAttribute("scr");
+        logger.info("click video link");
+        getVideoLink().click();
     }
 
     public void clickPlayButton(){
-        wait.waitForElementIsClickable(getPlayButton());
+        wait.forElementIsClickable(getPlayButton());
         Scroll.scrollToElement(driver,getPlayButton());
         getPlayButton().click();
         logger.info("click play button");

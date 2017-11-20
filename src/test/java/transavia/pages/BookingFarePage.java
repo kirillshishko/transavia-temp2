@@ -30,7 +30,7 @@ public class BookingFarePage extends AbstractPage {
     }
 
     public void clickSelectButton() {
-        wait.waitForElementIsClickable(getSelectButton());
+        wait.forElementIsClickable(getSelectButton());
         getSelectButton().click();
         logger.info("click select button");
 

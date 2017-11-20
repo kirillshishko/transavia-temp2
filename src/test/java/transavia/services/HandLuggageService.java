@@ -2,6 +2,7 @@ package transavia.services;
 
 import org.openqa.selenium.WebDriver;
 import transavia.pages.HandLuggagePage;
+import transavia.pages.YoutubePage;
 
 public class HandLuggageService extends AbstractService {
 
@@ -12,9 +13,9 @@ public class HandLuggageService extends AbstractService {
         handLuggagePage = new HandLuggagePage(driver);
     }
 
-    public String getVideoLink(){
-
-        return handLuggagePage.getVideoLink();
+    public YoutubeService goToVideoByLink(){
+            handLuggagePage.clickVideoLink();
+        return new YoutubeService(driver);
     }
 
     public HandLuggageService startVideo(){

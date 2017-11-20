@@ -3,7 +3,6 @@ package transavia.pages;
 
 import com.epam.mentoring.framework.decorator.CustomWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
@@ -46,18 +45,18 @@ public class LoginPage extends AbstractPage {
 
     public void sendBookingNumber(String number){
         wait.waitForPageLoaded(driver, TIMEOUT);
-        wait.waitForElementIsClickable(getBookingNumberTextbox() );
+        wait.forElementIsClickable(getBookingNumberTextbox() );
         getBookingNumberTextbox() .sendKeys(number);
         logger.info("set booking number : " +number);
     }
     public void sendLastName(String lastName){
-        wait.waitForElementIsClickable(getLastNameTextbox());
+        wait.forElementIsClickable(getLastNameTextbox());
         getLastNameTextbox().sendKeys(lastName);
         logger.info("set last name : " +lastName);
     }
 
     public void sendFlightDate(String date){
-        wait.waitForElementIsClickable(getFlightDateTextbox());
+        wait.forElementIsClickable(getFlightDateTextbox());
         getFlightDateTextbox().sendKeys(date);
         clickFlightDate();
         logger.info("set flight date : " +date);
@@ -67,7 +66,7 @@ public class LoginPage extends AbstractPage {
 
     public void clickViewBookingButton(){
 
-        wait.waitForElementIsClickable(getViewBookingButton());
+        wait.forElementIsClickable(getViewBookingButton());
         getViewBookingButton().click();
         logger.info("click view booking button");
     }

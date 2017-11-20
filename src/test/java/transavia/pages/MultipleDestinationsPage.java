@@ -45,9 +45,9 @@ public class MultipleDestinationsPage extends AbstractPage {
 
     public void setOutboundFlightFrom(String cityFrom){
         wait.waitForPageLoaded(driver, 30);
-        wait.waitForElementIsClickable(outboundFlightFromTextbox);
+        wait.forElementIsClickable(outboundFlightFromTextbox);
         outboundFlightFromTextbox.sendKeys(cityFrom);
-        wait.waitForElementIsClickable(autocompleteFrom);
+        wait.forElementIsClickable(autocompleteFrom);
         autocompleteFrom.click();
         logger.info("set departure airport");
 
@@ -55,9 +55,9 @@ public class MultipleDestinationsPage extends AbstractPage {
 
     public void setOutboundFlightTo(String cityTo){
 
-        wait.waitForElementIsClickable(outboundFlightToTextbox);
+        wait.forElementIsClickable(outboundFlightToTextbox);
         outboundFlightToTextbox.sendKeys(cityTo);
-        wait.waitForElementIsClickable(autocompleteTo);
+        wait.forElementIsClickable(autocompleteTo);
         autocompleteTo.click();
         logger.info("set destination airport");
 
@@ -65,7 +65,7 @@ public class MultipleDestinationsPage extends AbstractPage {
 
     public void setOutboundFlightDate(String date){
 
-        wait.waitForElementIsClickable(outboundFlightDateTextbox);
+        wait.forElementIsClickable(outboundFlightDateTextbox);
         outboundFlightDateTextbox.clear();
         outboundFlightDateTextbox.sendKeys(date);
         logger.info("set outbound flight date");
@@ -73,25 +73,25 @@ public class MultipleDestinationsPage extends AbstractPage {
 
     public void setInboundFlightFrom(String cityFrom){
 
-        wait.waitForElementIsClickable(inboundFlightFromTextbox);
+        wait.forElementIsClickable(inboundFlightFromTextbox);
         inboundFlightFromTextbox.sendKeys(cityFrom);
-        wait.waitForElementIsClickable(autocompleteFrom);
+        wait.forElementIsClickable(autocompleteFrom);
         autocompleteFrom.click();
         logger.info("set departure airport ");
     }
 
     public void setInboundFlightTo(String cityTo){
 
-        wait.waitForElementIsClickable(inboundFlightToTextbox);
+        wait.forElementIsClickable(inboundFlightToTextbox);
         inboundFlightToTextbox.sendKeys(cityTo);
-        wait.waitForElementIsClickable(autocompleteTo);
+        wait.forElementIsClickable(autocompleteTo);
         autocompleteTo.click();
         logger.info("set destination airport");
     }
 
     public void setInboundFlightDate(String date){
 
-        wait.waitForElementIsClickable(inboundFlightDateTextbox);
+        wait.forElementIsClickable(inboundFlightDateTextbox);
         inboundFlightDateTextbox.clear();
         inboundFlightDateTextbox.sendKeys(date);
         inboundFlightToTextbox.click();
@@ -100,7 +100,7 @@ public class MultipleDestinationsPage extends AbstractPage {
 
     public void clickSearchButton(){
 
-        wait.waitForElementIsClickable(searchButton);
+        wait.forElementIsClickable(searchButton);
         searchButton.click();
         logger.info("click search button");
     }
@@ -108,14 +108,14 @@ public class MultipleDestinationsPage extends AbstractPage {
     public void clickOutboundFlightSelectButton(){
 
         wait.waitForPageLoaded(driver, 30);
-        wait.waitForElementIsClickable(outboundFlightSelectButton);
+        wait.forElementIsClickable(outboundFlightSelectButton);
         outboundFlightSelectButton.click();
         logger.info("Select outbound flight");
     }
 
     public void clickInboundFlightSelectButton(){
 
-        wait.waitForElementIsClickable(inboundFlightSelectButton);
+        wait.forElementIsClickable(inboundFlightSelectButton);
         inboundFlightSelectButton.click();
         logger.info("Select inbound flight ");
         wait.waitForPageLoaded(driver,30);

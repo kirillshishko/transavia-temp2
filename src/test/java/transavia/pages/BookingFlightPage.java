@@ -3,7 +3,6 @@ package transavia.pages;
 import com.epam.mentoring.framework.decorator.CustomWebElement;
 import com.epam.mentoring.framework.ui_utils.Scroll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -62,7 +61,7 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     public void clickFirstOutboundSelectedFlight() {
-        wait.waitForElementIsClickable(getOutboundAvailableFlights().get(0));
+        wait.forElementIsClickable(getOutboundAvailableFlights().get(0));
         logger.info("select first outbound selected flight");
         getOutboundAvailableFlights().get(0).click();
         wait.pause(2000);
@@ -70,7 +69,7 @@ public class BookingFlightPage extends AbstractPage {
 
 
     public void clickFirstInboundAvailableFlight() {
-        wait.waitForElementIsClickable(getInboundAvailableFlights().get(0));
+        wait.forElementIsClickable(getInboundAvailableFlights().get(0));
         logger.info("select first inbound available flight");
         Scroll.scrollToElement(driver, getInboundAvailableFlights().get(0));
         getInboundAvailableFlights().get(0).click();
@@ -78,7 +77,7 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     public void clickFirstInboundFlightTimeSelectBtn() {
-        wait.waitForElementIsClickable(getInboundFlightTimeSelectBtns().get(0));
+        wait.forElementIsClickable(getInboundFlightTimeSelectBtns().get(0));
         logger.info("select first  time  of inbound flight");
         Scroll.scrollToElement(driver, getInboundFlightTimeSelectBtns().get(0));
         getInboundFlightTimeSelectBtns().get(0).click();
@@ -86,7 +85,7 @@ public class BookingFlightPage extends AbstractPage {
     }
 
     public void clickFirstOutboundFlightTimeSelectBtn() {
-        wait.waitForElementIsClickable(getOutboundFlightTimeSelectBtns().get(0));
+        wait.forElementIsClickable(getOutboundFlightTimeSelectBtns().get(0));
         logger.info("select first  time  of outbound flight");
         getOutboundFlightTimeSelectBtns().get(0).click();
 
@@ -98,7 +97,7 @@ public class BookingFlightPage extends AbstractPage {
    /*     Actions action = new Actions(driver);
         action.moveToElement(getNextBtn()).build().perform();*/
         wait.pause(3000);
-        wait.waitForElementIsClickable(getNextBtn());
+        wait.forElementIsClickable(getNextBtn());
         getNextBtn().click();
     }
 }

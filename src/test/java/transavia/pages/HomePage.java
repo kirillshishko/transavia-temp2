@@ -63,10 +63,10 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//span[@class=\"sub-navigation-level-1_link-text\" and contains(text(),\"View your booking\")]")
     private CustomWebElement viewYourBooking;
 
-    @FindBy(xpath = "li[@class='primary-navigation_item']/a[text()[contains(.,'Service')]]")
+    @FindBy(xpath = "//li[@class='primary-navigation_item']/a[text()[contains(.,'Service')]]")
     private CustomWebElement serviceBtn;
 
-    @FindBy(xpath = "li[@class='primary-navigation_item']/a[text()[contains(.,'Plan and book')]]")
+    @FindBy(xpath = "//li[1]/a[@href='/en-EU/service/hand-luggage/']")
     private CustomWebElement handLuggageBtn;
 
     public CustomWebElement getHandLuggageBtn() {
@@ -74,6 +74,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickHandLaggageBtn(){
+        wait.forElementIsClickable(getServiceBtn());
         getHandLuggageBtn().click();
     }
 
@@ -83,6 +84,8 @@ public class HomePage extends AbstractPage {
 
     public void clickServiceBtn(){
         getServiceBtn().click();
+        wait.forElementIsClickable(getServiceBtn());
+        //wait.pause(100);
     }
 
     public CustomWebElement getViewYourBooking() {
@@ -94,6 +97,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickViewYourBooking(){
+        wait.forElementIsClickable(getViewYourBooking());
         getViewYourBooking().click();
     }
 
@@ -158,14 +162,14 @@ public class HomePage extends AbstractPage {
     public void chooseAirportFrom(String city) {
         clickAirportFromInput();
         sendCityNameToAirportFromInput(city);
-        wait.waitForElementIsClickable(getAirportFrom());
+        wait.forElementIsClickable(getAirportFrom());
         clickAirportFrom();
     }
 
     public void chooseAirportTo(String city) {
         clickAirportToInput();
         sendCityNameToAirportToInput(city);
-        wait.waitForElementIsClickable(getAirportTo());
+        wait.forElementIsClickable(getAirportTo());
         clickAirportTo();
     }
 
@@ -243,7 +247,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickAdultsIncreaseBtn() {
-        wait.waitForElementIsClickable(getAdultsIncreaseBtn());
+        wait.forElementIsClickable(getAdultsIncreaseBtn());
         getAdultsIncreaseBtn().click();
     }
 
@@ -268,7 +272,7 @@ public class HomePage extends AbstractPage {
     }
 
     public void clickChildrensIncreaseBtn() {
-        wait.waitForElementIsClickable(getChildrensIncreaseBtn());
+        wait.forElementIsClickable(getChildrensIncreaseBtn());
         getChildrensIncreaseBtn().click();
     }
 

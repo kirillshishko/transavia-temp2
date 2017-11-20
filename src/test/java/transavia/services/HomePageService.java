@@ -42,10 +42,11 @@ public class HomePageService extends AbstractService {
         return  new BookingFlightService(driver);
     }
 
-    public HandLuggagePage goToHandLaggagePage(){
+    public HandLuggageService goToHandLaggagePage(){
         homePage.clickServiceBtn();
+
         homePage.clickHandLaggageBtn();
-        return  new HandLuggagePage(driver);
+        return  new HandLuggageService(driver);
     }
 
     public LoginService goToBookingViewPage(){

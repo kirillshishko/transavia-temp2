@@ -31,7 +31,7 @@ public class Wait {
                         .executeScript("return document.readyState").equals("complete"));
     }
 
-    public  void waitForElementIsClickable(WebElement element) {
+    public  void forElementIsClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
