@@ -14,7 +14,7 @@ public class HandLuggagePage extends AbstractPage {
     @FindBy(css = ".video iframe")
     private CustomWebElement video;
 
-    @FindBy(css = ".ytp-large-play-button")
+    @FindBy(css = ".ytp-large-play-button.ytp-button")
     private CustomWebElement playButton;
 
     @FindBy(css = ".ytp-title-link.yt-uix-sessionlink")

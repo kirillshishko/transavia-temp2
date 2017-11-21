@@ -69,6 +69,16 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//li[1]/a[@href='/en-EU/service/hand-luggage/']")
     private CustomWebElement handLuggageBtn;
 
+    @FindBy(xpath = "//a[@class= 'secondary-navigation_link' and contains(text(), 'Destinations')]")
+    private CustomWebElement destinationsBtn;
+
+    public CustomWebElement getDestinationsBtn() {
+        return destinationsBtn;
+    }
+    public void clickDestinationBtn(){
+        getDestinationsBtn().click();
+    }
+
     public CustomWebElement getHandLuggageBtn() {
         return handLuggageBtn;
     }

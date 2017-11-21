@@ -12,13 +12,13 @@ public class BookingFlightService extends AbstractService {
         bookingFlightPage = new BookingFlightPage(driver);
     }
 
-    private String s = "Unfortunately we do not fly from Dubai, United Arab Emirates to Agadir, Morocco. " +
+    private String errorMessage = "Unfortunately we do not fly from Dubai, United Arab Emirates to Agadir, Morocco. " +
             "However, we do fly from Dubai, United Arab Emirates to other destinations. " +
             "Please change your destination and try again.";
 
     public boolean  isErrorMessageContainsText(){
 
-        return bookingFlightPage.getErrorMessageText().contains(s);
+        return bookingFlightPage.getErrorMessageText().contains(errorMessage);
 
     }
 

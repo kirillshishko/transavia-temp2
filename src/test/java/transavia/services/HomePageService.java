@@ -61,6 +61,10 @@ public class HomePageService extends AbstractService {
         }
     }
 
+    public AdvancedSearchPageService goToDestinationPage(){
+        homePage.clickDestinationBtn();
+        return new AdvancedSearchPageService(driver);
+    }
     private void chooseAdultsNumber(int adultsNumber) {
         for (int i = 0; i < adultsNumber-1 ; i++) {
             homePage.clickAdultsIncreaseBtn();

@@ -11,4 +11,16 @@ public class AdvancedSearchPageService extends AbstractService {
         super(driver);
         advancedSearchPage = new AdvancedSearchPage(driver);
     }
+
+    public AdvancedSearchPageService serchTicket(String countryFrom, String budget){
+        advancedSearchPage.typeCountryFrom(countryFrom);
+        advancedSearchPage.clickBudgetDropDownBtn();
+        advancedSearchPage.typeBudgetValue(budget);
+        return new AdvancedSearchPageService(driver);
+    }
+
+    public boolean isSearchResultDisplayed(){
+
+        return isSearchResultDisplayed();
+    }
 }
